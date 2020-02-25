@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ImageUploader.Data;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting; //for IWebHostEnvironment
+using Microsoft.AspNetCore.Http; //for IFormFile
 using Microsoft.AspNetCore.Mvc;
 
 namespace ImageUploader.Controllers
@@ -24,7 +24,15 @@ namespace ImageUploader.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(IFormFile img)
         {
-            return Ok(await UploadRepo.ImageUploader(img));
+            try
+            {
+                string msg = await UploadRepo.ImageUploader(img, 300, 100);
+                return Ok(msg);
+            }
+            catch(Exception ex)
+            {
+                return Ok(ex.Message);
+            }
         }
     }
 }
