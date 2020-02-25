@@ -1,4 +1,4 @@
-This project is used "ImageMagic" Nuget package to resize, crop and save image to our ROOT folder using asp.net core web api.
+This project is used "Image Magick" Nuget package to resize, crop and save image to our ROOT folder using asp.net core web api.
 You can pass any image to this app using Postman(or any other app such as insomnia)
 
 API Call
